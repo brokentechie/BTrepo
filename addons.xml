@@ -22,7 +22,7 @@
         <extension point="xbmc.addon.repository" name="Brokentechie Repository">
             <info compressed="false">https://raw.githubusercontent.com/brokentechie/BTrepo/master/addons.xml</info>
             <checksum>https://raw.githubusercontent.com/brokentechie/BTrepo/master/addons.xml.md5</checksum>
-            <datadir zip="true">https://raw.githubusercontent.com/brokentechie/BTrepo/master/</datadir>
+            <datadir zip="true">https://raw.githubusercontent.com/brokentechie/BTrepo/master/zips</datadir>
             <hashes>false</hashes>
         </extension>
         <extension point="xbmc.addon.metadata">
