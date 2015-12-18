@@ -1,8 +1,9 @@
-v1.0.2
-Added Fresh Start option
+V1.0.3
+-Added Brettus Builds section
+-Changed to icon view
 
-v1.0.1
-Changed server.
+V1.0.2
+-Added new Third-Party Builds section
 
-v1.0
-Initial Release, credit to Whufclee, Guruwan and Husham for original code. This is a work in progress, and is being used as a learning tool.
+V1.0.1
+-First basic release
