@@ -1,5 +1,7 @@
 #
-#      Copyright (C) 2015 Lee Randall (whufclee)
+#      Copyright (C) 2015 Andy Robbins (Brokentechie)
+#
+#  Credit to Lee Randall (Whufclee), Guruwan (Kodimaster) and others for original code
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -29,16 +31,11 @@ import downloader
 import zipfile
 import ntpath
 
-ARTPATH      =  'http://brokentechie.ddns/wizard/art/' + os.sep
+ARTPATH      =  'http://brokentechie.ddns.net/wizard/art/' + os.sep
 ADDON        =  xbmcaddon.Addon(id='plugin.program.btwizard')
 AddonID      =  'plugin.program.btwizard'
 AddonTitle   =  "[COLOR=white]Brokentechie Wizard[/COLOR]"
 zip          =  ADDON.getSetting('zip')
-localcopy    =  ADDON.getSetting('localcopy')
-privatebuilds=  ADDON.getSetting('private')
-reseller     =  ADDON.getSetting('reseller')
-resellername =  ADDON.getSetting('resellername')
-resellerid   =  ADDON.getSetting('resellerid')
 mastercopy   =  ADDON.getSetting('mastercopy')
 trcheck      =  ADDON.getSetting('trcheck')
 dialog       =  xbmcgui.Dialog()
@@ -179,9 +176,9 @@ def Backup_Option():
     if os.path.exists(ADVANCED):
         extras.addDir('','Backup Advancedsettings.xml',ADVANCED,'restore_backup','Backup.png','','','Back Up Your advancedsettings.xml')
     if os.path.exists(KEYMAPS):
-        extras.addDir('','Backup Advancedsettings.xml',KEYMAPS,'restore_backup','Backup.png','','','Back Up Your keyboard.xml')
-    if os.path.exists(RSS):
-        extras.addDir('','Backup RssFeeds.xml',RSS,'restore_backup','Backup.png','','','Back Up Your RssFeeds.xml')
+        extras.addDir('','Backup Keyboard.xml',KEYMAPS,'restore_backup','Backup.png','','','Back Up Your keyboard.xml')
+#   if os.path.exists(RSS):
+#       extras.addDir('','Backup RssFeeds.xml',RSS,'restore_backup','Backup.png','','','Back Up Your RssFeeds.xml')
 #---------------------------------------------------------------------------------------------------
 #Function to restore a zip file 
 def Check_Download_Path():
@@ -217,13 +214,13 @@ def Check_GUI_Temp(url):
             xbmc.executebuiltin("ActivateWindow(appearancesettings)")
             GUI_Merge(url)
 #---------------------------------------------------------------------------------------------------
-#Create a community (universal) backup - this renames paths to special:// and removes unwanted folders
+#Create a universal backup - this renames paths to special:// and removes unwanted folders
 def Community_Backup():
     guisuccess=1
     Check_Download_Path()
-    fullbackuppath = xbmc.translatePath(os.path.join(USB,'Community Builds','My Builds',''))
-    myfullbackup = xbmc.translatePath(os.path.join(USB,'Community Builds','My Builds','my_full_backup.zip'))
-    myfullbackupGUI = xbmc.translatePath(os.path.join(USB,'Community Builds','My Builds','my_full_backup_GUI_Settings.zip'))
+    fullbackuppath = xbmc.translatePath(os.path.join(USB,'Universal Builds','My Builds',''))
+    myfullbackup = xbmc.translatePath(os.path.join(USB,'Universal Builds','My Builds','my_full_backup.zip'))
+    myfullbackupGUI = xbmc.translatePath(os.path.join(USB,'Universal Builds','My Builds','my_full_backup_GUI_Settings.zip'))
     if not os.path.exists(fullbackuppath):
         os.makedirs(fullbackuppath)
     vq = extras.Get_Keyboard( heading="Enter a name for this backup" )
@@ -232,10 +229,10 @@ def Community_Backup():
     backup_zip = xbmc.translatePath(os.path.join(fullbackuppath,title+'.zip'))
     exclude_dirs_full =  ['plugin.program.btwizard']
     exclude_files_full = ["xbmc.log","xbmc.old.log","kodi.log","kodi.old.log",'.DS_Store','.setup_complete','XBMCHelper.conf']
-    exclude_dirs =  ['plugin.program.btwizard', 'plugin.repository.shadowcrew','cache', 'system', 'Thumbnails', "peripheral_data",'library','keymaps']
-    exclude_files = ["xbmc.log","xbmc.old.log","kodi.log","kodi.old.log","Textures13.db",'.DS_Store','.setup_complete','XBMCHelper.conf', 'advancedsettings.xml']
+    exclude_dirs =  ['plugin.program.btwizard','cache', 'system', 'Thumbnails', "peripheral_data",'library','keymaps']
+    exclude_files = ["xbmc.log","xbmc.old.log","kodi.log","kodi.old.log","Textures13.db",'.DS_Store','.setup_complete','XBMCHelper.conf']
     message_header = "Creating full backup of existing build"
-    message_header2 = "Creating Community Build"
+    message_header2 = "Creating Universal Build"
     message1 = "Archiving..."
     message2 = ""
     message3 = "Please Wait"
@@ -272,8 +269,8 @@ def Community_Backup():
     if guisuccess == 0:
         dialog.ok("FAILED!", 'The guisettings.xml file could not be found on your', 'system, please reboot and try again.', '')
     else:
-        dialog.ok("SUCCESS!", 'You Are Now Backed Up. If you\'d like to share this build with', 'the community please post details on the forum at')
-        dialog.ok("Build Locations", 'Full Backup (only used to restore on this device): [COLOR=yellow]'+myfullbackup, '[/COLOR]Universal Backup (can be used on any device): [COLOR=yellow]'+backup_zip+'[/COLOR]')
+        dialog.ok("SUCCESS!", 'You Are Now Backed Up.')
+        dialog.ok("Build Locations", 'Universal Backup (can be used on any device): [COLOR=yellow]'+backup_zip+'[/COLOR]')
 #---------------------------------------------------------------------------------------------------
 #Function to delete the userdata/addon_data folder
 def DeleteAddonData():
@@ -400,7 +397,7 @@ def Restore_Backup_XML(name,url,description):
     dialog.ok("[COLOR=white]Brokentechie Wizard[/COLOR]", "", 'All Done !','')
 #---------------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------------
-#Function to restore a local copy of a CB file
+#Function to restore a local copy of a Universal build file
 #### THIS CODE BLOCK SHOULD BE MERGED INTO THE RESTORE_COMMUNITY FUNCTION BUT I RAN OUT OF TIME TO DO IT CLEANLY ###
 def Restore_Local_Community():
     exitfunction=0
@@ -426,7 +423,7 @@ def Restore_Local_Community():
         return
     choice = xbmcgui.Dialog().yesno(name, 'We highly recommend backing up your existing build before', 'installing any builds.', 'Would you like to perform a backup first?', nolabel='Backup',yeslabel='Install')
     if choice == 0:
-        mybackuppath = xbmc.translatePath(os.path.join(USB,'Community Builds','My Builds'))
+        mybackuppath = xbmc.translatePath(os.path.join(USB,'Universal Builds','My Builds'))
         if not os.path.exists(mybackuppath):
             os.makedirs(mybackuppath)
         vq = extras.Get_Keyboard( heading="Enter a name for this backup" )
@@ -552,22 +549,22 @@ def Restore_Option():
         extras.addDir('','Restore Your Addon UserData','addon_data','restore_zip','Restore.png','','','Restore Your Addon UserData')           
 
     if os.path.exists(os.path.join(USB,'guisettings.xml')):
-        extras.addDir('','Restore Guisettings.xml',GUI,'resore_backup','Restore.png','','','Restore Your guisettings.xml')
+        extras.addDir('','Restore Guisettings.xml',GUI,'restore_backup','Restore.png','','','Restore Your guisettings.xml')
     
     if os.path.exists(os.path.join(USB,'favourites.xml')):
-        extras.addDir('','Restore Favourites.xml',FAVS,'resore_backup','Restore.png','','','Restore Your favourites.xml')
+        extras.addDir('','Restore Favourites.xml',FAVS,'restore_backup','Restore.png','','','Restore Your favourites.xml')
         
     if os.path.exists(os.path.join(USB,'sources.xml')):
-        extras.addDir('','Restore Source.xml',SOURCE,'resore_backup','Restore.png','','','Restore Your sources.xml')
+        extras.addDir('','Restore Source.xml',SOURCE,'restore_backup','Restore.png','','','Restore Your sources.xml')
         
     if os.path.exists(os.path.join(USB,'advancedsettings.xml')):
-        extras.addDir('','Restore Advancedsettings.xml',ADVANCED,'resore_backup','Restore.png','','','Restore Your advancedsettings.xml')        
+        extras.addDir('','Restore Advancedsettings.xml',ADVANCED,'restore_backup','Restore.png','','','Restore Your advancedsettings.xml')        
 
     if os.path.exists(os.path.join(USB,'keyboard.xml')):
-        extras.addDir('','Restore Advancedsettings.xml',KEYMAPS,'resore_backup','Restore.png','','','Restore Your keyboard.xml')
+        extras.addDir('','Restore Keyboard.xml',KEYMAPS,'restore_backup','Restore.png','','','Restore Your keyboard.xml')
         
     if os.path.exists(os.path.join(USB,'RssFeeds.xml')):
-        extras.addDir('','Restore RssFeeds.xml',RSS,'resore_backup','Restore.png','','','Restore Your RssFeeds.xml')    
+        extras.addDir('','Restore RssFeeds.xml',RSS,'restore_backup','Restore.png','','','Restore Your RssFeeds.xml')    
 #---------------------------------------------------------------------------------------------------
 #Function to restore a previously backed up zip, this includes full backup, addons or addon_data.zip
 def Restore_Zip_File(url):

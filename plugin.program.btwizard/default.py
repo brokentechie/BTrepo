@@ -86,20 +86,21 @@ VERSION = "1.0.3"
 PATH = "Brokentechie Wizard" 
 
 #-----------------------------------------------------------------------------------------------------------------
-#
-#-----------------------------------------------------------------------------------------------------------------
 #Function to open addon settings
 def Addon_Settings():
     ADDON.openSettings(sys.argv[0])
+
 #---------------------------------------------------------------------------------------------------
 #Addon Maintenance Section
 def Addon_Fixes():
-    extras.addDir('','Update My Add-ons (Force Refresh)', 'none', 'update', 'Maintenance.png','','','')
+    extras.addDir('','Update My Add-ons (Force Refresh)', 'none', 'update', 'Refresh.png','','','')
+
 #-----------------------------------------------------------------------------------------------------------------
 #Backup/Restore root menu
-#def Backup_Restore():
-#    extras.addDir('folder','Backup My Content','none','backup_option','Backup.png','','','')
-#    extras.addDir('folder','Restore My Content','none','restore_option','Restore.png','','','')
+def Backup_Restore():
+    extras.addDir('folder','Backup My Content','none','backup_option','Backup.png','','','')
+    extras.addDir('folder','Restore My Content','none','restore_option','Restore.png','','','')
+
 #---------------------------------------------------------------------------------------------------
 #Main category list
 def Categories():
@@ -122,6 +123,7 @@ def Clear_Cache():
     if choice == 1:
         cache.Wipe_Cache()
 #        Remove_Textures()
+
 #---------------------------------------------------------------------------------------------------
 #Get params and clean up into string or integer
 def Get_Params():
@@ -141,8 +143,7 @@ def Get_Params():
                                 param[splitparams[0]]=splitparams[1]
                                 
         return param
-#---------------------------------------------------------------------------------------------------
-#
+
 #---------------------------------------------------------------------------------------------------
 #Function to clear the packages folder
 def Remove_Crash_Logs():
@@ -150,6 +151,7 @@ def Remove_Crash_Logs():
     if choice == 1:
         extras.Delete_Logs()
         dialog.ok("Crash Logs Removed", '', 'Your crash log files have now been removed.','')
+
 #---------------------------------------------------------------------------------------------------
 #Function to clear the packages folder
 def Remove_Packages():
@@ -157,6 +159,7 @@ def Remove_Packages():
     if choice == 1:
         extras.Delete_Packages()
         dialog.ok("Packages Removed", '', 'Your zip install files have now been removed.','')
+
 #---------------------------------------------------------------------------------------------------
 #Function to clear the packages folder
 def Remove_Textures():
@@ -167,13 +170,15 @@ def Remove_Textures():
         choice = xbmcgui.Dialog().yesno('Quit Kodi Now?', 'Cache has been successfully deleted.', 'You must now restart Kodi, would you like to quit now?','', nolabel='I\'ll restart later',yeslabel='Yes, quit')
         if choice == 1:
             killxbmc()
+
 #---------------------------------------------------------------------------------------------------
 #Maintenance section
 def Tools():
-    extras.addDir('folder','Add-on Maintenance/Fixes', 'none', 'addonfixes', 'Fix.png','','','')
-#    extras.addDir('folder','Backup/Restore My Content','none','backup_restore','Backup.png','','','')
-    extras.addDir('folder','Clean/Wipe Options', 'none', 'wipetools', 'Fix.png','','','')
+    extras.addDir('folder','Add-on Maintenance/Fixes', 'none', 'addonfixes', 'Addon_fixes.png','','','')
+    extras.addDir('folder','Clean/Wipe Options', 'none', 'wipetools', 'Clean.png','','','')
+    extras.addDir('folder','Backup/Restore My Content','none','backup_restore','Backup_restore.png','','','')
     extras.addDir('','Force Close Kodi','url','kill_xbmc','Kill_XBMC.png','','','')
+
 #-----------------------------------------------------------------------------------------------------------------
 #Function to clear the addon_data
 def Wipe_Kodi():
@@ -204,12 +209,13 @@ def Wipe_Kodi():
 #-----------------------------------------------------------------------------------------------------------------    
 #Maintenance section
 def Wipe_Tools():
-    extras.addDir('','Clear Cache','url','clear_cache','Fix.png','','','')
-    extras.addDir('','Clear My Cached Artwork', 'none', 'remove_textures', 'Fix.png','','','')
+    extras.addDir('','Clear Cache','url','clear_cache','Clean.png','','','')
+    extras.addDir('','Clear My Cached Artwork', 'none', 'remove_textures', 'Clean.png','','','')
 #    extras.addDir('','Delete Old Builds/Zips From Device','url','remove_build','Delete_Builds.png','','','')
 #    extras.addDir('','Delete Old Crash Logs','url','remove_crash_logs','Delete_Crash_Logs.png','','','')
-    extras.addDir('','Delete Packages Folder','url','remove_packages','Fix.png','','','')
+    extras.addDir('','Delete Packages Folder','url','remove_packages','Clean.png','','','')
     extras.addDir('','Wipe My Install (Fresh Start)', 'none', 'wipe_xbmc', 'Fresh_Start.png','','','')
+
 #-----------------------------------------------------------------------------------------------------------------
 #Builds Section
 def BuildMenu():
@@ -466,9 +472,7 @@ if mode==None or url==None or len(url)<1:
         Categories()
 
 elif mode == 'addonfixes'         : Addon_Fixes()
-elif mode == 'addonmenu'          : Addon_Menu()
 elif mode == 'addon_settings'     : Addon_Settings()
-elif mode == 'backup'             : BACKUP()
 elif mode == 'backup_option'      : communitybuilds.Backup_Option()
 elif mode == 'backup_restore'     : Backup_Restore()
 elif mode == 'thirdpartymenu'     : ThirdPartyMenu()

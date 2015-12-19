@@ -1,9 +1,14 @@
-V1.0.3
--Added Brettus Builds section
--Changed to icon view
+v2.0.0
+Added Backup/Restore options, improved icons, general code tidying
 
-V1.0.2
--Added new Third-Party Builds section
+v1.0.3
+Updated icons, added Maintenance and Third-Party (SPMC) builds section.
 
-V1.0.1
--First basic release
+v1.0.2
+Added Fresh Start option
+
+v1.0.1
+Changed server.
+
+v1.0
+Initial Release, credit to Whufclee, Guruwan and Husham for original code. This is a work in progress, and is being used as a learning tool.
