@@ -1,3 +1,6 @@
+v2.0.1
+Deleted superfluos code
+
 v2.0.0
 Added Backup/Restore options, improved icons, general code tidying
 

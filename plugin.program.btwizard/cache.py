@@ -1,5 +1,7 @@
 #
-#      Copyright (C) 2014 Lee Randall (whufclee)
+#      Copyright (C) 2015 Andy Robbins (Brokentechie)
+#
+#  Credit to Lee Randall (Whufclee), Guruwan (Kodimaster) and others for original code
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -19,6 +21,12 @@
 
 import re,os,threading,xbmc,xbmcplugin,xbmcgui,xbmcaddon
 
+thumbnailPath = xbmc.translatePath('special://thumbnails');
+cachePath = os.path.join(xbmc.translatePath('special://home'), 'cache')
+tempPath = xbmc.translatePath('special://temp')
+databasePath = xbmc.translatePath('special://database')
+
+
 try:
     from sqlite3 import dbapi2 as database
 except:
@@ -27,21 +35,50 @@ except:
 # Thanks to Mikey1234 for a lot of this cache code and also lambda for the clear cache option in genesis.
 def Wipe_Cache():
     xbmc_cache_path = os.path.join(xbmc.translatePath('special://home'), 'cache')
-    if os.path.exists(xbmc_cache_path)==True:
-        for root, dirs, files in os.walk(xbmc_cache_path):
+    if os.path.exists(cachePath)==True:    
+        for root, dirs, files in os.walk(cachePath):
             file_count = 0
             file_count += len(files)
             if file_count > 0:
-                for f in files:
-                    try:
-                        os.unlink(os.path.join(root, f))
-                    except:
-                        pass
-                for d in dirs:
-                    try:
-                        shutil.rmtree(os.path.join(root, d))
-                    except:
-                        pass
+
+                dialog = xbmcgui.Dialog()
+                if dialog.yesno("Delete Kodi Cache Files", str(file_count) + " files found", "Do you want to delete them?"):
+                
+                    for f in files:
+                        try:
+                            if (f == "xbmc.log" or f == "xbmc.old.log"): continue
+                            os.unlink(os.path.join(root, f))
+                        except:
+                            pass
+                    for d in dirs:
+                        try:
+                            shutil.rmtree(os.path.join(root, d))
+                        except:
+                            pass
+                        
+            else:
+                pass
+    if os.path.exists(tempPath)==True:    
+        for root, dirs, files in os.walk(tempPath):
+            file_count = 0
+            file_count += len(files)
+            if file_count > 0:
+                dialog = xbmcgui.Dialog()
+                if dialog.yesno("Delete Kodi Temp Files", str(file_count) + " files found", "Do you want to delete them?"):
+                    for f in files:
+                        try:
+                            if (f == "xbmc.log" or f == "xbmc.old.log"): continue
+                            os.unlink(os.path.join(root, f))
+                        except:
+                            pass
+                    for d in dirs:
+                        try:
+                            shutil.rmtree(os.path.join(root, d))
+                        except:
+                            pass
+                        
+            else:
+                pass
     if xbmc.getCondVisibility('system.platform.ATV2'):
         atv2_cache_a = os.path.join('/private/var/mobile/Library/Caches/AppleTV/Video/', 'Other')
         for root, dirs, files in os.walk(atv2_cache_a):
@@ -162,6 +199,9 @@ def Wipe_Cache():
         dbcon.commit()
     except:
         pass
+
+    dialog = xbmcgui.Dialog()
+    dialog.ok("Brokentechie Maintenance", "Clear Cache - Completed")
 #-----------------------------------------------------------------------------------------------------------------
 #Function to remove textures13.db and thumbnails folder
 def Remove_Textures():

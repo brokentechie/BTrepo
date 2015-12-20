@@ -67,9 +67,6 @@ tempfile     =  xbmc.translatePath(os.path.join(ADDON_DATA,AddonID,'temp.xml'))
 idfile       =  xbmc.translatePath(os.path.join(ADDON_DATA,AddonID,'id.xml'))
 idfiletemp   =  xbmc.translatePath(os.path.join(ADDON_DATA,AddonID,'idtemp.xml'))
 skin         =  xbmc.getSkinDir()
-username     =  ADDON.getSetting('username')
-password     =  ADDON.getSetting('password')
-login        =  ADDON.getSetting('login')
 userdatafolder = xbmc.translatePath(os.path.join(ADDON_DATA,AddonID))
 GUINEW       =  xbmc.translatePath(os.path.join(userdatafolder,'guinew.xml'))
 guitemp      =  xbmc.translatePath(os.path.join(userdatafolder,'guitemp',''))
@@ -80,32 +77,7 @@ urlbase      =  'None'
 #Main addDirectory function - xbmcplugin.addDirectoryItem()
 def Add_Directory_Item(handle, url, listitem, isFolder):
     xbmcplugin.addDirectoryItem(handle, url, listitem, isFolder)
-#---------------------------------------------------------------------------------------------------
-#Add a standard directory for the builds. Essentially the same as above but grabs unique artwork from previous call
-def Add_Build_Dir(name,url,mode,iconimage,fanart,video,description,skins,guisettingslink):
-        u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)+"&iconimage="+urllib.quote_plus(iconimage)+"&fanart="+urllib.quote_plus(fanart)+"&video="+urllib.quote_plus(video)+"&description="+urllib.quote_plus(description)+"&skins="+urllib.quote_plus(skins)+"&guisettingslink="+urllib.quote_plus(guisettingslink)
-        ok=True
-        liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
-        liz.setInfo( type="Video", infoLabels={ "Title": name, "Plot": description } )
-        liz.setProperty( "Fanart_Image", fanart )
-        liz.setProperty( "Build.Video", video )
-        if (mode==None) or (mode=='restore_option') or (mode=='backup_option') or (mode=='cb_root_menu') or (mode=='genres') or (mode=='grab_builds') or (mode=='community_menu') or (mode=='instructions') or (mode=='countries')or (url==None) or (len(url)<1):
-            ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=True)
-        else:
-            ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=False)
-        return ok
-#---------------------------------------------------------------------------------------------------
-#Add a directory for the description, this requires multiple string to be called from previous menu
-def Add_Desc_Dir(name,url,mode,iconimage,fanart,buildname,author,version,description,updated,skins,videoaddons,audioaddons,programaddons,pictureaddons,sources,adult):
-        iconimage = ARTPATH + iconimage
-        u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)+"&iconimage="+urllib.quote_plus(iconimage)+"&fanart="+urllib.quote_plus(fanart)+"&author="+urllib.quote_plus(author)+"&description="+urllib.quote_plus(description)+"&version="+urllib.quote_plus(version)+"&buildname="+urllib.quote_plus(buildname)+"&updated="+urllib.quote_plus(updated)+"&skins="+urllib.quote_plus(skins)+"&videoaddons="+urllib.quote_plus(videoaddons)+"&audioaddons="+urllib.quote_plus(audioaddons)+"&buildname="+urllib.quote_plus(buildname)+"&programaddons="+urllib.quote_plus(programaddons)+"&pictureaddons="+urllib.quote_plus(pictureaddons)+"&sources="+urllib.quote_plus(sources)+"&adult="+urllib.quote_plus(adult)
-        ok=True
-        liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
-        liz.setInfo( type="Video", infoLabels={ "Title": name, "Plot": description } )
-        liz.setProperty( "Fanart_Image", fanart )
-        liz.setProperty( "Build.Video", video )
-        ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=False)
-        return ok
+
 #---------------------------------------------------------------------------------------------------
 #Zip up tree
 def Archive_Tree(sourcefile, destfile, message_header, message1, message2, message3, exclude_dirs, exclude_files):
@@ -177,8 +149,7 @@ def Backup_Option():
         extras.addDir('','Backup Advancedsettings.xml',ADVANCED,'restore_backup','Backup.png','','','Back Up Your advancedsettings.xml')
     if os.path.exists(KEYMAPS):
         extras.addDir('','Backup Keyboard.xml',KEYMAPS,'restore_backup','Backup.png','','','Back Up Your keyboard.xml')
-#   if os.path.exists(RSS):
-#       extras.addDir('','Backup RssFeeds.xml',RSS,'restore_backup','Backup.png','','','Back Up Your RssFeeds.xml')
+
 #---------------------------------------------------------------------------------------------------
 #Function to restore a zip file 
 def Check_Download_Path():
@@ -312,22 +283,7 @@ def Fix_Special(url):
                  f = open((os.path.join(root, file)), mode='w')
                  f.write(str(b))
                  f.close()
-#---------------------------------------------------------------------------------------------------
-#Installs special art for premium.
-def Install_Art(path):
-    background_art = xbmc.translatePath(os.path.join(USERDATA,'background_art',''))
-    if not os.path.exists(background_art):
-        os.makedirs(background_art)
-    try:
-        dp.create("Installing Artwork","Downloading artwork pack",'', 'Please Wait')
-        artpack=os.path.join(USB, resellername+'_artpack.zip')
-        downloader.download(path, artpack, dp)
-        time.sleep(1)
-#        Read_Zip(artpack)
-        dp.create("[COLOR=white]Brokentechie Wizard[/COLOR]","Checking ",'', 'Please Wait')
-        dp.update(0,"", "Extracting Zip Please Wait")
-        extract.all(artpack,background_art,dp)
-    except: pass
+
 #---------------------------------------------------------------------------------------------------
 # Dialog to warn users about local guisettings fix.
 def Local_GUI_Dialog():
@@ -395,7 +351,7 @@ def Restore_Backup_XML(name,url,description):
             f.write(TO_READ)
             f.close()  
     dialog.ok("[COLOR=white]Brokentechie Wizard[/COLOR]", "", 'All Done !','')
-#---------------------------------------------------------------------------------------------------
+
 #---------------------------------------------------------------------------------------------------
 #Function to restore a local copy of a Universal build file
 #### THIS CODE BLOCK SHOULD BE MERGED INTO THE RESTORE_COMMUNITY FUNCTION BUT I RAN OUT OF TIME TO DO IT CLEANLY ###
@@ -616,31 +572,7 @@ def Restore_Zip_File(url):
             dialog.ok("Community Builds - Install Complete", 'To ensure the skin settings are set correctly XBMC will now', 'close. If XBMC doesn\'t close please force close (pull power', 'or force close in your OS - [COLOR=lime]DO NOT exit via Kodi menu[/COLOR])')
         else:
             dialog.ok("[COLOR=white]Brokentechie Wizard[/COLOR]", "You Are Now Restored", '','')        
-#---------------------------------------------------------------------------------------------------
-# Check local file version name and number against db
-def Show_Info(url):
-    BaseURL='http://totalxbmc.com/totalrevolution/Community_Builds/community_builds.php?id=%s' % (url)
-    link = extras.Open_URL(BaseURL).replace('\n','').replace('\r','')
-    namematch = re.compile('name="(.+?)"').findall(link)
-    authormatch = re.compile('author="(.+?)"').findall(link)
-    versionmatch = re.compile('version="(.+?)"').findall(link)
-#    updatedmatch = re.compile('updated="(.+?)"').findall(link)
-    name  = namematch[0] if (len(namematch) > 0) else ''
-    author  = authormatch[0] if (len(authormatch) > 0) else ''
-    version  = versionmatch[0] if (len(versionmatch) > 0) else ''
-#    updated  = updatedmatch[0] if (len(updatedmatch) > 0) else ''
-    dialog.ok(name,'Author: '+author,'Latest Version: '+version,'')
-    return
-#---------------------------------------------------------------------------------------------------
-#Search in description
-def Search_Builds(url):
-    vq = extras.Get_Keyboard( heading="Search for content" )
-    # if blank or the user cancelled the keyboard, return
-    if ( not vq ): return False, 0
-    # we need to set the title to our query
-    title = urllib.quote_plus(vq)
-    url += title
-    Grab_Builds(url)
+
 #---------------------------------------------------------------------------------------------------
 #Get params and clean up into string or integer
 def Get_Params():

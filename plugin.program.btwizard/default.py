@@ -122,7 +122,7 @@ def Clear_Cache():
     choice = xbmcgui.Dialog().yesno('Clear All Known Cache?', 'This will clear all known cache files and can help', 'if you\'re encountering kick-outs during playback.','as well as other random issues. There is no harm in using this.', nolabel='Cancel',yeslabel='Delete')
     if choice == 1:
         cache.Wipe_Cache()
-#        Remove_Textures()
+
 
 #---------------------------------------------------------------------------------------------------
 #Get params and clean up into string or integer
@@ -158,7 +158,6 @@ def Remove_Packages():
     choice = xbmcgui.Dialog().yesno('Delete Packages Folder?', 'This will free up space by deleting the zip install', 'files of your addons. The only downside is you\'ll no', 'longer be able to rollback to older versions.', nolabel='Cancel',yeslabel='Delete')
     if choice == 1:
         extras.Delete_Packages()
-        dialog.ok("Packages Removed", '', 'Your zip install files have now been removed.','')
 
 #---------------------------------------------------------------------------------------------------
 #Function to clear the packages folder
@@ -480,12 +479,8 @@ elif mode == 'buildmenu'		  : BuildMenu()
 elif mode == 'categories'         : Categories()
 elif mode == 'clear_cache'        : Clear_Cache()
 elif mode == 'community_backup'   : communitybuilds.Community_Backup()
-elif mode == 'community_menu'     : communitybuilds.Community_Menu(url,video)        
-elif mode == 'description'        : communitybuilds.Description(name,url,buildname,author,version,description,updated,skins,videoaddons,audioaddons,programaddons,pictureaddons,sources,adult)
 elif mode == 'fix_special'        : communitybuilds.Fix_Special(url)
 elif mode == 'genres'             : Genres(url)
-elif mode == 'grab_addons'        : addons.Grab_Addons(url)
-elif mode == 'grab_builds_premium': communitybuilds.Grab_Builds_Premium(url)
 elif mode == 'guisettingsfix'     : communitybuilds.GUI_Settings_Fix(url,local)
 elif mode == 'guisettings'        : guisettings()   
 elif mode == 'LocalGUIDialog'     : communitybuilds.Local_GUI_Dialog()
@@ -493,18 +488,13 @@ elif mode == 'remove_addons'      : extras.Remove_Addons(url)
 elif mode == 'remove_crash_logs'  : Remove_Crash_Logs()
 elif mode == 'remove_packages'    : Remove_Packages()
 elif mode == 'remove_textures'    : Remove_Textures()
-elif mode == 'restore'            : extras.RESTORE()
 elif mode == 'restore_backup'     : communitybuilds.Restore_Backup_XML(name,url,description)
 elif mode == 'restore_local_CB'   : communitybuilds.Restore_Local_Community()
 elif mode == 'restore_local_gui'  : communitybuilds.Restore_Local_GUI()
 elif mode == 'restore_option'     : communitybuilds.Restore_Option()
 elif mode == 'restore_zip'        : communitybuilds.Restore_Zip_File(url)         
-elif mode == 'restore_community'  : communitybuilds.Restore_Community(name,url,video,description,skins,guisettingslink)        
-elif mode == 'showinfo'           : communitybuilds.Show_Info(url)
-elif mode == 'SortBy'             : extras.Sort_By(BuildURL,type)
 elif mode == 'tools'              : Tools()     
 elif mode == 'update'             : addons.Update_Repo()
-elif mode == 'user_info'          : Show_User_Info()
 elif mode == 'wipetools'          : Wipe_Tools()
 elif mode == 'xbmcversion'        : extras.XBMC_Version(url)
 elif mode == 'wipe_xbmc'          : Wipe_Kodi()

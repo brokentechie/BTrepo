@@ -36,7 +36,6 @@ dp         =  xbmcgui.DialogProgress()
 USERDATA   =  xbmc.translatePath(os.path.join('special://home/userdata',''))
 ADDON_DATA =  xbmc.translatePath(os.path.join(USERDATA,'addon_data'))
 ADDONS     =  xbmc.translatePath(os.path.join('special://home','addons'))
-ytlink     = 'http://gdata.youtube.com/feeds/api/users/"+YT_ID+"/playlists?start-index=1&max-results=25'
 addonfolder      = xbmc.translatePath(os.path.join('special://','home/addons'))
 packages         = xbmc.translatePath(os.path.join('special://home/addons','packages'))
 username     =  ADDON.getSetting('username')

@@ -27,7 +27,6 @@ import subprocess
 import datetime
 import extras
 import downloader
-import speedtest
 import addons
 import communitybuilds
 import zipfile
@@ -138,10 +137,10 @@ def Delete_Packages():
                 for d in dirs:
                     shutil.rmtree(os.path.join(root, d))
                 dialog = xbmcgui.Dialog()
-                dialog.ok("Maintenance", "Purge Packages - Completed")
+                dialog.ok("Brokentechie Maintenance", "Purge Packages - Completed")
             else:
                 dialog = xbmcgui.Dialog()
-                dialog.ok("Maintenance", "No Packages to Purge")
+                dialog.ok("Brokentechie Maintenance", "No Packages to Purge")
 #---------------------------------------------------------------------------------------------------
 #Function to delete the userdata/addon_data folder
 def Delete_Userdata():
