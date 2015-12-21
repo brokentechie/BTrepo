@@ -45,6 +45,7 @@ mastercopy   =  ADDON.getSetting('mastercopy')
 dialog       =  xbmcgui.Dialog()
 dp           =  xbmcgui.DialogProgress()
 HOME         =  xbmc.translatePath('special://home/')
+EXCLUDES     = ['plugin.program.btwizard','script.module.addon.common','repository.brokentechie']
 USERDATA     =  xbmc.translatePath(os.path.join('special://home/userdata',''))
 MEDIA        =  xbmc.translatePath(os.path.join('special://home/media',''))
 AUTOEXEC     =  xbmc.translatePath(os.path.join(USERDATA,'autoexec.py'))
@@ -83,7 +84,8 @@ urlbase      =  'None'
 USER_AGENT = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3'
 base='http://brokentechie.ddns.net/'
 VERSION = "1.0.3"
-PATH = "Brokentechie Wizard" 
+PATH = "Brokentechie Wizard"
+
 
 #-----------------------------------------------------------------------------------------------------------------
 #Function to open addon settings
@@ -181,37 +183,34 @@ def Tools():
 #-----------------------------------------------------------------------------------------------------------------
 #Function to clear the addon_data
 def Wipe_Kodi():
-	freshstartprompt = xbmcgui.Dialog().yesno('WARNING', 'This will erase all data and reset Kodi to defaults', 'Are you sure you want to continue?', nolabel='No, Cancel',yeslabel='Yes')
-	if freshstartprompt == 1:
-		dp = xbmcgui.DialogProgress()
-		dp.create("Fresh Start" ,"Please Wait...")
-		dp.update(1)
-		homefolder = xbmc.translatePath('special://home/')
-		for root, dirs, files in os.walk(homefolder,topdown=False):
-			for f in files:
-				path = os.path.join(root, f)
-				if 'btwizard' not in path:
-					try: 
-						os.remove(os.path.join(root,f))
-					except:
-						pass
-			for d in dirs:
-				path = os.path.join(root, d)
-				if 'btwizard' not in path:
-					try: 
-						os.rmdir(os.path.join(root,d))
-					except:
-						pass
-		dp.close
-		killxbmc()
-		
+    plugintools.log("freshstart.main_list "+repr(params)); yes_pressed=plugintools.message_yes_no(AddonTitle,"Do you wish to restore your","Kodi configuration to default settings?")
+    if yes_pressed:
+        addonPath=xbmcaddon.Addon(id=AddonID).getAddonInfo('path'); addonPath=xbmc.translatePath(addonPath); 
+        xbmcPath=os.path.join(addonPath,"..",".."); xbmcPath=os.path.abspath(xbmcPath); plugintools.log("freshstart.main_list xbmcPath="+xbmcPath); failed=False
+        try:
+            for root, dirs, files in os.walk(xbmcPath,topdown=True):
+                dirs[:] = [d for d in dirs if d not in EXCLUDES]
+                for name in files:
+                    try: os.remove(os.path.join(root,name))
+                    except:
+                        if name not in ["Addons15.db","MyVideos75.db","Textures13.db","xbmc.log"]: failed=True
+                        plugintools.log("Error removing "+root+" "+name)
+                for name in dirs:
+                    try: os.rmdir(os.path.join(root,name))
+                    except:
+                        if name not in ["Database","userdata"]: failed=True
+                        plugintools.log("Error removing "+root+" "+name)
+            if not failed: plugintools.log("freshstart.main_list All user files removed, you now have a clean install"); plugintools.message(AddonTitle,"The process is complete, you're now back to a fresh Kodi configuration with Brokentechie Wizard!","Please reboot your system or restart Kodi in order for the changes to be applied.")
+            else: plugintools.log("freshstart.main_list User files partially removed"); plugintools.message(AddonTitle,"The process is complete, you're now back to a fresh Kodi configuration with Brokentechie Wizard","Please reboot your system or restart Kodi in order for the changes to be applied.")
+        except: plugintools.message(AddonTitle,"Problem found","Your settings has not been changed"); import traceback; plugintools.log(traceback.format_exc()); plugintools.log("freshstart.main_list NOT removed")
+        plugintools.add_item(action="",title="Now Exit Kodi",folder=False)
+    else: plugintools.message(AddonTitle,"Your settings","has not been changed"); plugintools.add_item(action="",title="Done",folder=False)
+
 #-----------------------------------------------------------------------------------------------------------------    
 #Maintenance section
 def Wipe_Tools():
     extras.addDir('','Clear Cache','url','clear_cache','Clean.png','','','')
     extras.addDir('','Clear My Cached Artwork', 'none', 'remove_textures', 'Clean.png','','','')
-#    extras.addDir('','Delete Old Builds/Zips From Device','url','remove_build','Delete_Builds.png','','','')
-#    extras.addDir('','Delete Old Crash Logs','url','remove_crash_logs','Delete_Crash_Logs.png','','','')
     extras.addDir('','Delete Packages Folder','url','remove_packages','Clean.png','','','')
     extras.addDir('','Wipe My Install (Fresh Start)', 'none', 'wipe_xbmc', 'Fresh_Start.png','','','')
 

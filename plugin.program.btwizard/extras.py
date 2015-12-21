@@ -52,9 +52,7 @@ net        =  Net()
 notifyart  =  xbmc.translatePath(os.path.join(ADDONS,AddonID,'resources/'))
 EXCLUDES     =  ['plugin.program.btwizard','script.module.addon.common','addon.common.addon']
 FANART       =  xbmc.translatePath(os.path.join(ADDONS,AddonID,'fanart.jpg'))
-reseller     =  ADDON.getSetting('reseller')
-resellername =  ADDON.getSetting('resellername')
-resellerid   =  ADDON.getSetting('resellerid')
+
 #-----------------------------------------------------------------------------------------------------------------    
 #Popup class - thanks to whoever codes the help popup in TVAddons Maintenance for this section. Unfortunately there doesn't appear to be any author details in that code so unable to credit by name.
 class SPLASH(xbmcgui.WindowXMLDialog):
