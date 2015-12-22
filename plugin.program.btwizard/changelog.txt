@@ -1,11 +1,8 @@
-v2.0.3
-Small bug rectified
-
 v2.0.2
 Improved Wipe command to retain BT Wizard
 
 v2.0.1
-Deleted superfluos code
+Deleted superfluous code
 
 v2.0.0
 Added Backup/Restore options, improved icons, general code tidying
