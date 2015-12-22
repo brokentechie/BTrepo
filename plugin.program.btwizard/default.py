@@ -101,7 +101,7 @@ def Addon_Fixes():
 #Backup/Restore root menu
 def Backup_Restore():
     extras.addDir('folder','Backup My Content','none','backup_option','Backup.png','','','')
-    extras.addDir('folder','Restore My Content','none','restore_option','Restore.png','','','')
+    extras.addDir('folder','Restore My Content','none','restore_option','Backup.png','','','')
 
 #---------------------------------------------------------------------------------------------------
 #Main category list
@@ -177,7 +177,7 @@ def Remove_Textures():
 def Tools():
     extras.addDir('folder','Add-on Maintenance/Fixes', 'none', 'addonfixes', 'Addon_fixes.png','','','')
     extras.addDir('folder','Clean/Wipe Options', 'none', 'wipetools', 'Clean.png','','','')
-    extras.addDir('folder','Backup/Restore My Content','none','backup_restore','Backup_restore.png','','','')
+    extras.addDir('folder','Backup/Restore My Content','none','backup_restore','Backup.png','','','')
     extras.addDir('','Force Close Kodi','url','kill_xbmc','Kill_XBMC.png','','','')
 
 #-----------------------------------------------------------------------------------------------------------------

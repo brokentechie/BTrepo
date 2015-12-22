@@ -495,32 +495,32 @@ def Restore_Local_GUI():
 def Restore_Option():
     if trcheck == 'true':
         Check_Local_Install()
-    extras.addDir('','[COLOR=lime]RESTORE LOCAL BUILD[/COLOR]','url','restore_local_CB','Restore.png','','','Back Up Your Full System')
-    extras.addDir('','[COLOR=dodgerblue]Restore Local guisettings file[/COLOR]','url','LocalGUIDialog','Restore.png','','','Back Up Your Full System')
+    extras.addDir('','[COLOR=lime]RESTORE LOCAL BUILD[/COLOR]','url','restore_local_CB','Backup.png','','','Back Up Your Full System')
+    extras.addDir('','[COLOR=dodgerblue]Restore Local guisettings file[/COLOR]','url','LocalGUIDialog','Backup.png','','','Back Up Your Full System')
     
     if os.path.exists(os.path.join(USB,'addons.zip')):   
-        extras.addDir('','Restore Your Addons','addons','restore_zip','Restore.png','','','Restore Your Addons')
+        extras.addDir('','Restore Your Addons','addons','restore_zip','Backup.png','','','Restore Your Addons')
 
     if os.path.exists(os.path.join(USB,'addon_data.zip')):   
-        extras.addDir('','Restore Your Addon UserData','addon_data','restore_zip','Restore.png','','','Restore Your Addon UserData')           
+        extras.addDir('','Restore Your Addon UserData','addon_data','restore_zip','Backup.png','','','Restore Your Addon UserData')           
 
     if os.path.exists(os.path.join(USB,'guisettings.xml')):
-        extras.addDir('','Restore Guisettings.xml',GUI,'restore_backup','Restore.png','','','Restore Your guisettings.xml')
+        extras.addDir('','Restore Guisettings.xml',GUI,'restore_backup','Backup.png','','','Restore Your guisettings.xml')
     
     if os.path.exists(os.path.join(USB,'favourites.xml')):
-        extras.addDir('','Restore Favourites.xml',FAVS,'restore_backup','Restore.png','','','Restore Your favourites.xml')
+        extras.addDir('','Restore Favourites.xml',FAVS,'restore_backup','Backup.png','','','Restore Your favourites.xml')
         
     if os.path.exists(os.path.join(USB,'sources.xml')):
-        extras.addDir('','Restore Source.xml',SOURCE,'restore_backup','Restore.png','','','Restore Your sources.xml')
+        extras.addDir('','Restore Source.xml',SOURCE,'restore_backup','Backup.png','','','Restore Your sources.xml')
         
     if os.path.exists(os.path.join(USB,'advancedsettings.xml')):
-        extras.addDir('','Restore Advancedsettings.xml',ADVANCED,'restore_backup','Restore.png','','','Restore Your advancedsettings.xml')        
+        extras.addDir('','Restore Advancedsettings.xml',ADVANCED,'restore_backup','Backup.png','','','Restore Your advancedsettings.xml')        
 
     if os.path.exists(os.path.join(USB,'keyboard.xml')):
-        extras.addDir('','Restore Keyboard.xml',KEYMAPS,'restore_backup','Restore.png','','','Restore Your keyboard.xml')
+        extras.addDir('','Restore Keyboard.xml',KEYMAPS,'restore_backup','Backup.png','','','Restore Your keyboard.xml')
         
     if os.path.exists(os.path.join(USB,'RssFeeds.xml')):
-        extras.addDir('','Restore RssFeeds.xml',RSS,'restore_backup','Restore.png','','','Restore Your RssFeeds.xml')    
+        extras.addDir('','Restore RssFeeds.xml',RSS,'restore_backup','Backup.png','','','Restore Your RssFeeds.xml')    
 #---------------------------------------------------------------------------------------------------
 #Function to restore a previously backed up zip, this includes full backup, addons or addon_data.zip
 def Restore_Zip_File(url):
