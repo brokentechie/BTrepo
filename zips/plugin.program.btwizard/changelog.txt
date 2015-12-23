@@ -1,5 +1,5 @@
-v2.0.5
-Changted rubbish Icons!
+v2.0.6
+Changed rubbish Icons, code tinkering.
 
 v2.0.2
 Improved Wipe command to retain BT Wizard
