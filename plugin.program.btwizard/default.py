@@ -224,7 +224,7 @@ def BuildMenu():
     setView('movies', 'MAIN')
 	
 def ThirdPartyMenu():
-    link = OPEN_URL('https://archive.org/download/brokentechiewizardtxt/thirdpartybuilds.txt').replace('\n','').replace('\r','')
+    link = OPEN_URL('https://www.dropbox.com/s/jf90hcl8l8jikn8/thirdpartybuilds.txt?dl=1').replace('\n','').replace('\r','')
     match = re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)"').findall(link)
     for name,url,iconimage,fanart,description in match:
         addDir(name,url,'wizard',iconimage,fanart,description)
