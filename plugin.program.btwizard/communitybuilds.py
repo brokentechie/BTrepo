@@ -200,7 +200,7 @@ def Community_Backup():
     backup_zip = xbmc.translatePath(os.path.join(fullbackuppath,title+'.zip'))
     exclude_dirs_full =  ['plugin.program.btwizard']
     exclude_files_full = ["xbmc.log","xbmc.old.log","kodi.log","kodi.old.log",'.DS_Store','.setup_complete','XBMCHelper.conf']
-    exclude_dirs =  ['plugin.program.btwizard','cache', 'system', 'Thumbnails', "peripheral_data",'library','keymaps']
+    exclude_dirs =  ['plugin.program.btwizard','cache', 'system', 'Thumbnails', "peripheral_data",'library']
     exclude_files = ["xbmc.log","xbmc.old.log","kodi.log","kodi.old.log","Textures13.db",'.DS_Store','.setup_complete','XBMCHelper.conf']
     message_header = "Creating full backup of existing build"
     message_header2 = "Creating Universal Build"
