@@ -45,7 +45,7 @@ mastercopy   =  ADDON.getSetting('mastercopy')
 dialog       =  xbmcgui.Dialog()
 dp           =  xbmcgui.DialogProgress()
 HOME         =  xbmc.translatePath('special://home/')
-EXCLUDES     = ['plugin.program.btwizard','script.module.addon.common','repository.brokentechie']
+EXCLUDES     = ['plugin.program.btwizard','script.module.addon.common','repository.brokentechie','plugin.video.sportsmania']
 USERDATA     =  xbmc.translatePath(os.path.join('special://home/userdata',''))
 MEDIA        =  xbmc.translatePath(os.path.join('special://home/media',''))
 AUTOEXEC     =  xbmc.translatePath(os.path.join(USERDATA,'autoexec.py'))
@@ -83,7 +83,7 @@ tempdbpath   =  xbmc.translatePath(os.path.join(USB,'Database'))
 urlbase      =  'None'
 USER_AGENT = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3'
 base='http://brokentechie.ddns.net/'
-VERSION = "2.0.8"
+VERSION = "2.0.9"
 PATH = "Brokentechie Wizard"
 
 
