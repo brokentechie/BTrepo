@@ -83,7 +83,7 @@ tempdbpath   =  xbmc.translatePath(os.path.join(USB,'Database'))
 urlbase      =  'None'
 USER_AGENT = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3'
 base='http://brokentechie.ddns.net/'
-VERSION = "2.1.0"
+VERSION = "2.1.1"
 PATH = "Brokentechie Wizard"
 
 
@@ -214,7 +214,7 @@ def Wipe_Tools():
 #-----------------------------------------------------------------------------------------------------------------
 #Builds Section
 def BuildMenu():
-    link = OPEN_URL('https://archive.org/download/brokentechiewizardtxt/brokentechiebuilds.txt').replace('\n','').replace('\r','')
+    link = OPEN_URL('https://archive.org/download/brokentechiebuilds/brokentechiebuilds.txt').replace('\n','').replace('\r','')
     match = re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)"').findall(link)
     for name,url,iconimage,fanart,description in match:
         addDir(name,url,'wizard',iconimage,fanart,description)
