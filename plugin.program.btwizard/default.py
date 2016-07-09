@@ -83,7 +83,7 @@ tempdbpath   =  xbmc.translatePath(os.path.join(USB,'Database'))
 urlbase      =  'None'
 USER_AGENT = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3'
 base='http://brokentechie.ddns.net/'
-VERSION = "2.1.1"
+VERSION = "2.1.2"
 PATH = "Brokentechie Wizard"
 
 
