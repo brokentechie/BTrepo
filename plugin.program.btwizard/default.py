@@ -83,7 +83,7 @@ tempdbpath   =  xbmc.translatePath(os.path.join(USB,'Database'))
 urlbase      =  'None'
 USER_AGENT = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3'
 base='http://brokentechie.ddns.net/'
-VERSION = "2.1.2"
+VERSION = "2.1.3"
 PATH = "Brokentechie Wizard"
 
 
@@ -221,7 +221,7 @@ def BuildMenu():
     setView('movies', 'MAIN')
 	
 def ThirdPartyMenu():
-    link = OPEN_URL('https://www.dropbox.com/s/jf90hcl8l8jikn8/thirdpartybuilds.txt?dl=1').replace('\n','').replace('\r','')
+    link = OPEN_URL('https://www.dropbox.com/s/sx3qysd17zwujxc/thirdpartybuilds.txt?dl=1').replace('\n','').replace('\r','')
     match = re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)"').findall(link)
     for name,url,iconimage,fanart,description in match:
         addDir(name,url,'wizard',iconimage,fanart,description)
