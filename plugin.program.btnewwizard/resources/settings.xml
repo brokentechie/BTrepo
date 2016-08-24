@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <category label="Backup Storage">
+        <setting id="zip" type="folder"    label="Choose Backup Storage Location"      default=""/>
+        <setting id="dummy" label="[COLOR=yellow]Click here to check download path[/COLOR]" type="action" action="XBMC.RunScript(special://home/addons/plugin.program.btwizard/resources/libs/checkPath.py)" option="close"/>
+		<setting id="mastercopy" type="bool" label="Create full duplicate backup AS WELL as a universal build" default="false"/>
+        <setting type="lsep" label="[CR][CR]"/>
+		<setting type="lsep" label="[COLOR=red]Universal Build:[/COLOR] Will work on any device."/>
+		<setting type="lsep" label="[CR][COLOR=blue]Full duplicate backup:[/COLOR] Will only work on your existing device."/>
+		<setting type="lsep" label="[CR][CR]"/>
+	</category>
+	
+	<category label="Build Options">
+		<setting type="lsep" label="Current Build:"/>
+		<setting id="buildname" type="text" label="Installed Build: " enable="false" default=""/>
+		<setting id="buildversion" type="text" label="Installed Version: " enable="false" default=""/>
+		<setting id="buildtheme" type="text" label="Current Theme: " enable="false" default=""/>
+		<setting id="latestversion" type="text" label="Latest Version: " enable="false" default=""/>
+		<setting id="lastbuildcheck" type="text" label="Next check for build update: " enable="false" default=""/>
+		<setting type="lsep" label="Show Builds:"/>
+		<setting id="show15" type="bool" label="Show Kodi v15.0 and Below Builds" default="true"/>
+		<setting id="show16" type="bool" label="Show Kodi v16.0 and Above Builds" default="true"/>
+		<setting id="seperate" type="bool" label="Do not seperate based off version" default="false"/>
+		<setting id="installed" type="bool" label="Build Installed" visible="false" default="false" />
+		<setting id="extract" type="text" label="Extract Build %" visible="false" default="100" />
+		<setting id="errors" type="text" label="Extract Error" visible="false" default="" />
+	</category>
+	
+    <category label="Auto Clean Up">
+		<setting id="autoclean" type="bool" label="Enable Auto Clean" default="false"/>
+		<setting id="clearcache" type="bool" label="Clear Cache on Startup" default="50" enable="!eq(-1,false)"/>
+		<setting id="clearpackages" type="bool" label="Clear Packages on Startup" default="50" enable="!eq(-2,false)"/>
+   	</category>  	
+	
+	<category label="Install Settings">
+		<setting type="lsep" label="Keep Settings When Installing Build:"/>
+		<setting id="keepfavourites" type="bool" label="Keep My Favourites" default="false"/>
+		<setting id="keepsources" type="bool" label="Keep My Sources" default="false"/>
+		<setting id="keepprofiles" type="bool" label="Keep My Profiles" default="false"/>
+		<setting id="keepadvanced" type="bool" label="Keep My AdvancedSettings.xml" default="false"/>
+		<setting id="notify" type="bool" label="Disable Notification on Startup" />
+		<setting id="noteid" type="text" label="Latest Notification" visible="false" />
+		<setting id="notedismiss" type="bool" label="Dismiss or Remind me later" visible="false" />
+		<setting type="lsep" label="Upload Log: "/>
+		<setting id="email" type="text" label="E-Mail Address" />
+	</category>
+	
+	<category label="Trakt Settings">
+		<setting type="lsep" label="Save Trakt Data:"/>
+		<setting id="keeptrakt" type="bool" label="Keep My Trakt Data" default="false"/>
+		<setting id="exodus" type="text" label="Exodus: " enable="false" default=""/>
+		<setting id="royalwe" type="text" label="The Royal We: " enable="false" default=""/>
+		<setting id="salts" type="text" label="Salts: " enable="false" default=""/>
+		<setting id="saltshd" type="text" label="Salts HD: " enable="false" default=""/>
+		<setting id="velocity" type="text" label="Velocity: " enable="false" default=""/>
+		<setting id="velocitykids" type="text" label="Velocity Kids: " enable="false" default=""/>
+		<setting id="specto" type="text" label="Specto: " enable="false" default=""/>
+		<setting id="trakt" type="text" label="Trakt: " enable="false" default=""/>
+		<setting id="traktlastsave" type="text" label="Last Time Trakt Saved: " enable="false" default=""/>
+	</category>
+	
+	<category label="Real Debrid Settings">
+		<setting type="lsep" label="Save Real Debrid Data:"/>
+		<setting id="keepdebrid" type="bool" label="Keep My Real Debrid Data" default="false"/>
+		<setting id="realexodus" type="text" label="Exodus: " enable="false" default=""/>
+		<setting id="realspecto" type="text" label="Specto: " enable="false" default=""/>
+		<setting id="urlresolver" type="text" label="Url Resolver: " enable="false" default=""/>
+		<setting id="debridlastsave" type="text" label="Last Time Real Debrid Saved: " enable="false" default=""/>
+	</category>
+	
+    <category label="Auto-View">
+		<setting id="developer" type="bool" label="Show Developer Menu: " enable="true" default=""/>
+		<setting id="auto-view" type="bool" label="Enable Auto View" default="true"/>
+		<setting id="MAIN" type="number" label="MAIN" default="50" enable="!eq(-1,false)"/>
+   	</category>  	
+  </settings>
