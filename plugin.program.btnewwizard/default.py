@@ -879,6 +879,7 @@ params=get_params()
 url=None
 name=None
 mode=None
+description=None
 
 try:     mode=urllib.unquote_plus(params["mode"])
 except:  pass
@@ -886,7 +887,8 @@ try:     name=urllib.unquote_plus(params["name"])
 except:  pass
 try:     url=urllib.unquote_plus(params["url"])
 except:  pass
-
+try:    description=urllib.unquote_plus(params["description"])
+except: pass
 wiz.log('[ Version : \'%s\' ] [ Mode : \'%s\' ] [ Name : \'%s\' ] [ Url : \'%s\' ]' % (VERSION, mode if not mode == '' else None, name, url))
 
 def setView(content, viewType):
