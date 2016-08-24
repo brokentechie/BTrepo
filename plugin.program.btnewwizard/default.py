@@ -7,7 +7,7 @@ import fnmatch
 try:    from sqlite3 import dbapi2 as database
 except: from pysqlite2 import dbapi2 as database
 from datetime import date, datetime, timedelta
-from resources.libs import communitybuilds, extract, downloader, notify, debridit, traktit, skinSwitch, uploadLog, wizard as wiz
+from resources.libs import  communitybuilds, extract, downloader, notify, debridit, traktit, skinSwitch, uploadLog, wizard as wiz
 
 ADDON_ID       = uservar.ADDON_ID
 ADDONTITLE     = uservar.ADDONTITLE
@@ -925,9 +925,10 @@ elif mode=='apk'            : apkMenu()
 elif mode=='apkinstall'     : apkInstaller(name, url)
 
 elif mode=='savedata'       : saveMenu()
-elif mode =='backup_restore': communitybuilds.Backup_Option()
-elif mode =='restore_zip'   : communitybuilds.Restore_Zip_File(url)
-elif mode =='restore_backup': communitybuilds.Restore_Backup_XML(name,url,description)
+elif mode=='community_backup': communitybuilds.Community_Backup()
+elif mode=='backup_restore' : communitybuilds.Backup_Option()
+elif mode=='restore_zip'    : communitybuilds.Restore_Zip_File(url)
+elif mode=='restore_backup' : communitybuilds.Restore_Backup_XML(name,url,description)
 elif mode=='togglesetting'  : wiz.setS(name, 'false' if wiz.getS(name) == 'true' else 'true'); xbmc.executebuiltin('Container.Refresh')
 
 elif mode=='trakt'          : traktMenu()
