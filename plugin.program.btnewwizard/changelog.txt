@@ -1,3 +1,5 @@
+v3.0.2 update wizard txt file
+
 V3.0 Initail release based on Aftermath wizard
 
 v0.1.4
