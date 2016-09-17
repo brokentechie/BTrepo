@@ -7,10 +7,10 @@ ADDON_ID       = xbmcaddon.Addon().getAddonInfo('id')
 ADDONTITLE     = 'BrokenTechie Wizard'
 EXCLUDES       = [ADDON_ID, 'repository.brokentechie', 'script.module.addon.common']
 # Text File with build info in it.
-BUILDFILE      = 'https://dl.dropboxusercontent.com/u/84381538/brokentechiebuilds.txt'
+BUILDFILE      = 'http://brokentechie.ddns.net/wizard/brokentechiebuilds.txt'
 # How often you would list it to check for build updates in days
 # 0 being every startup of kodi
-UPDATECHECK    = 0
+UPDATECHECK    = 7
 # Text File with apk info in it.
 APKFILE        = 'http://brokentechie.ddns.net/wizard/apks.txt'
 
