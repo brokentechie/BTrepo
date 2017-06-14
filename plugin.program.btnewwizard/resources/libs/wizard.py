@@ -68,6 +68,8 @@ AUTOINSTALL    = uservar.AUTOINSTALL
 REPOADDONXML   = uservar.REPOADDONXML
 REPOZIPURL     = uservar.REPOZIPURL
 CONTACT        = uservar.CONTACT
+COLOR1         = uservar.COLOR1
+COLOR2         = uservar.COLOR2
 
 ###########################
 ###### Settings Items #####
@@ -350,12 +352,14 @@ def latestApk(apk, ret=None):
 ##########################
 
 def platform():
-	if xbmc.getCondVisibility('system.platform.android'):   return 'android'
-	elif xbmc.getCondVisibility('system.platform.linux'):   return 'linux'
-	elif xbmc.getCondVisibility('system.platform.windows'): return 'windows'
-	elif xbmc.getCondVisibility('system.platform.osx'):	    return 'osx'
-	elif xbmc.getCondVisibility('system.platform.atv2'):    return 'atv2'
-	elif xbmc.getCondVisibility('system.platform.ios'):	    return 'ios'
+	if xbmc.getCondVisibility('system.platform.android'):             return 'android'
+	elif xbmc.getCondVisibility('system.platform.linux'):             return 'linux'
+	elif xbmc.getCondVisibility('system.platform.linux.Raspberrypi'): return 'linux'
+	elif xbmc.getCondVisibility('system.platform.windows'):           return 'windows'
+	elif xbmc.getCondVisibility('system.platform.osx'):               return 'osx'
+	elif xbmc.getCondVisibility('system.platform.atv2'):              return 'atv2'
+	elif xbmc.getCondVisibility('system.platform.ios'):               return 'ios'
+	elif xbmc.getCondVisibility('system.platform.darwin'):            return 'ios'
 
 def log_check():
 	ret = False
@@ -440,88 +444,94 @@ def clearCache():
 ####KILL XBMC ###############
 #####THANKS GUYS @ TI########
 
-def killxbmc():
-	choice = DIALOG.yesno('Force Close Kodi', 'You are about to close Kodi', 'Would you like to continue?', nolabel='No, Cancel',yeslabel='Yes, Close')
-	if choice == 0: return
-	elif choice == 1: pass
-	myplatform = platform()
-	log("Platform: " + str(myplatform))
-	if myplatform == 'osx': # OSX
-		log("############ try osx force close #################")
-		try: os.system('killall -9 XBMC')
-		except: pass
-		try: os.system('killall -9 Kodi')
-		except: pass
-		DIALOG.ok("[COLOR=red][B]WARNING !!![/COLOR][/B]", "If you\'re seeing this message it means the force close", "was unsuccessful. Please force close XBMC/Kodi [COLOR=lime]DO NOT[/COLOR] exit cleanly via the menu.",'')
-	elif myplatform == 'linux': #Linux
-		log("############ try linux force close #################")
-		try: os.system('killall XBMC')
-		except: pass
-		try: os.system('killall Kodi')
-		except: pass
-		try: os.system('killall -9 xbmc.bin')
-		except: pass
-		try: os.system('killall -9 kodi.bin')
-		except: pass
-		DIALOG.ok("[COLOR=red][B]WARNING !!![/COLOR][/B]", "If you\'re seeing this message it means the force close", "was unsuccessful. Please force close XBMC/Kodi [COLOR=lime]DO NOT[/COLOR] exit cleanly via the menu.",'')
-	elif myplatform == 'android': # Android 
-		log("############ try android force close #################")
-		try: os.system('adb shell am force-stop org.xbmc.kodi')
-		except: pass
-		try: os.system('adb shell am force-stop org.kodi')
-		except: pass
-		try: os.system('adb shell am force-stop org.xbmc.xbmc')
-		except: pass
-		try: os.system('adb shell am force-stop org.xbmc')
-		except: pass		
-		try: os.system('adb shell kill org.xbmc.kodi')
-		except: pass
-		try: os.system('adb shell kill org.kodi')
-		except: pass
-		try: os.system('adb shell kill org.xbmc.xbmc')
-		except: pass
-		try: os.system('adb shell kill org.xbmc')
-		except: pass
-		try: os.system('Process.killProcess(android.os.Process.org.xbmc,kodi());')
-		except: pass
-		try: os.system('Process.killProcess(android.os.Process.org.kodi());')
-		except: pass
-		try: os.system('Process.killProcess(android.os.Process.org.xbmc.xbmc());')
-		except: pass
-		try: os.system('Process.killProcess(android.os.Process.org.xbmc());')
-		except: pass
-		DIALOG.ok(ADDONTITLE, "Press the HOME button on your remote and [COLOR=red][B]FORCE STOP[/COLOR][/B] KODI via the Manage Installed Applications menu in settings on your Amazon home page then re-launch KODI")
-	elif myplatform == 'windows': # Windows
-		log("############ try windows force close #################")
-		try:
-			os.system('@ECHO off')
-			os.system('tskill XBMC.exe')
-		except: pass
-		try:
-			os.system('@ECHO off')
-			os.system('tskill Kodi.exe')
-		except: pass
-		try:
-			os.system('@ECHO off')
-			os.system('TASKKILL /im Kodi.exe /f')
-		except: pass
-		try:
-			os.system('@ECHO off')
-			os.system('TASKKILL /im XBMC.exe /f')
-		except: pass
-		DIALOG.ok("[COLOR=red][B]WARNING !!![/COLOR][/B]", "If you\'re seeing this message it means the force close", "was unsuccessful. Please force close XBMC/Kodi [COLOR=lime]DO NOT[/COLOR] exit cleanly via the menu.","Use task manager and NOT ALT F4")
-	else: #ATV
-		log("############ try atv force close #################")
-		try: os.system('killall AppleTV')
-		except: pass
-		log("############ try raspbmc force close #################") #OSMC / Raspbmc
-		try: os.system('sudo initctl stop kodi')
-		except: pass
-		try: os.system('sudo initctl stop xbmc')
-		except: pass
-		DIALOG.ok("[COLOR=red][B]WARNING !!![/COLOR][/B]", "If you\'re seeing this message it means the force close", "was unsuccessful. Please force close XBMC/Kodi [COLOR=lime]DO NOT[/COLOR] exit via the menu.","iOS detected. Press and hold both the Sleep/Wake and Home button for at least 10 seconds, until you see the Apple logo.")
+#def killxbmc():
+#	choice = DIALOG.yesno('Force Close Kodi', 'You are about to close Kodi', 'Would you like to continue?', nolabel='No, Cancel',yeslabel='Yes, Close')
+#	if choice == 0: return
+#	elif choice == 1: pass
+#	myplatform = platform()
+#	log("Platform: " + str(myplatform))
+#	if myplatform == 'osx': # OSX
+#		log("############ try osx force close #################")
+#		try: os.system('killall -9 XBMC')
+#		except: pass
+#		try: os.system('killall -9 Kodi')
+#		except: pass
+#		DIALOG.ok("[COLOR=red][B]WARNING !!![/COLOR][/B]", "If you\'re seeing this message it means the force close", "was unsuccessful. Please force close XBMC/Kodi [COLOR=lime]DO NOT[/COLOR] exit cleanly via the menu.",'')
+#	elif myplatform == 'linux': #Linux
+#		log("############ try linux force close #################")
+#		try: os.system('killall XBMC')
+#		except: pass
+#		try: os.system('killall Kodi')
+#		except: pass
+#		try: os.system('killall -9 xbmc.bin')
+#		except: pass
+#		try: os.system('killall -9 kodi.bin')
+#		except: pass
+#		DIALOG.ok("[COLOR=red][B]WARNING !!![/COLOR][/B]", "If you\'re seeing this message it means the force close", "was unsuccessful. Please force close XBMC/Kodi [COLOR=lime]DO NOT[/COLOR] exit cleanly via the menu.",'')
+#	elif myplatform == 'android': # Android 
+#		log("############ try android force close #################")
+#		try: os.system('adb shell am force-stop org.xbmc.kodi')
+#		except: pass
+#		try: os.system('adb shell am force-stop org.kodi')
+#		except: pass
+#		try: os.system('adb shell am force-stop org.xbmc.xbmc')
+#		except: pass
+#		try: os.system('adb shell am force-stop org.xbmc')
+#		except: pass		
+#		try: os.system('adb shell kill org.xbmc.kodi')
+#		except: pass
+#		try: os.system('adb shell kill org.kodi')
+#		except: pass
+#		try: os.system('adb shell kill org.xbmc.xbmc')
+#		except: pass
+#		try: os.system('adb shell kill org.xbmc')
+#		except: pass
+#		try: os.system('Process.killProcess(android.os.Process.org.xbmc,kodi());')
+#		except: pass
+#		try: os.system('Process.killProcess(android.os.Process.org.kodi());')
+#		except: pass
+#		try: os.system('Process.killProcess(android.os.Process.org.xbmc.xbmc());')
+#		except: pass
+#		try: os.system('Process.killProcess(android.os.Process.org.xbmc());')
+#		except: pass
+#		DIALOG.ok(ADDONTITLE, "Press the HOME button on your remote and [COLOR=red][B]FORCE STOP[/COLOR][/B] KODI via the Manage Installed Applications menu in settings on your Amazon home page then re-launch KODI")
+#	elif myplatform == 'windows': # Windows
+#		log("############ try windows force close #################")
+#		try:
+#			os.system('@ECHO off')
+#			os.system('tskill XBMC.exe')
+#		except: pass
+#		try:
+#			os.system('@ECHO off')
+#			os.system('tskill Kodi.exe')
+#		except: pass
+#		try:
+#			os.system('@ECHO off')
+#			os.system('TASKKILL /im Kodi.exe /f')
+#		except: pass
+#		try:
+#			os.system('@ECHO off')
+#			os.system('TASKKILL /im XBMC.exe /f')
+#		except: pass
+#		DIALOG.ok("[COLOR=red][B]WARNING !!![/COLOR][/B]", "If you\'re seeing this message it means the force close", "was unsuccessful. Please force close XBMC/Kodi [COLOR=lime]DO NOT[/COLOR] exit cleanly via the menu.","Use task manager and NOT ALT F4")
+#	else: #ATV
+#		log("############ try atv force close #################")
+#		try: os.system('killall AppleTV')
+#		except: pass
+#		log("############ try raspbmc force close #################") #OSMC / Raspbmc
+#		try: os.system('sudo initctl stop kodi')
+#		except: pass
+#		try: os.system('sudo initctl stop xbmc')
+#		except: pass
+#		DIALOG.ok("[COLOR=red][B]WARNING !!![/COLOR][/B]", "If you\'re seeing this message it means the force close", "was unsuccessful. Please force close XBMC/Kodi [COLOR=lime]DO NOT[/COLOR] exit via the menu.","iOS detected. Press and hold both the Sleep/Wake and Home button for at least 10 seconds, until you see the Apple logo.")
 
-##########################
+def killxbmc(over=None):
+	if over: choice = 1
+	else: choice = DIALOG.yesno('Force Close Kodi', '[COLOR %s]You are about to close Kodi' % COLOR2, 'Would you like to continue?[/COLOR]', nolabel='[B][COLOR red] No Cancel[/COLOR][/B]',yeslabel='[B][COLOR green]Force Close Kodi[/COLOR][/B]')
+	if choice == 1:
+		log("Force Closing Kodi: Platform[%s]" % str(platform()))
+		os._exit(1)
+###########################
 ### PURGE DATABASE #######
 ##########################
 def purgeDb(name):
