@@ -16,7 +16,7 @@
   </extension>
 </addon>
 
-<addon id="plugin.program.btwizard" name="BT Wizard" version="3.0.5a" provider-name="BrokenTechie">
+<addon id="plugin.program.btwizard" name="BT Wizard" version="3.0.6" provider-name="BrokenTechie">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
   </requires>

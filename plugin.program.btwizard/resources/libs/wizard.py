@@ -1155,8 +1155,8 @@ def asciiCheck(use=None, over=False):
 	else: LogNotify("[COLOR %s]%s[/COLOR]" % (COLOR1, ADDONTITLE), "[COLOR %s]ASCII Check: None Found.[/COLOR]" % COLOR2)
 
 def fileCount(home, excludes=True):
-	exclude_dirs  = [ADDON_ID, 'cache', 'system', 'packages', 'Thumbnails', 'peripheral_data', 'temp', 'My_Builds', 'library', 'keymaps']
-	exclude_files = ['Textures13.db', '.DS_Store', 'advancedsettings.xml', 'Thumbs.db', '.gitignore']
+	exclude_dirs  = [ADDON_ID, 'cache', 'system', 'packages', 'Thumbnails', 'peripheral_data', 'temp', 'My_Builds', 'keymaps']
+	exclude_files = ['Textures13.db', '.DS_Store', 'Thumbs.db', '.gitignore']
 	item = []
 	for base, dirs, files in os.walk(home):
 		if excludes:
@@ -1237,8 +1237,8 @@ def convertAdvanced():
 ###BACK UP/RESTORE #######
 ##########################
 def backUpOptions(type, name=""):
-	exclude_dirs  = [ADDON_ID, 'cache', 'system', 'Thumbnails', 'peripheral_data', 'temp', 'My_Builds', 'library', 'keymaps']
-	exclude_files = ['Textures13.db', '.DS_Store', 'advancedsettings.xml', 'Thumbs.db', '.gitignore']
+	exclude_dirs  = [ADDON_ID, 'cache', 'system', 'Thumbnails', 'peripheral_data', 'temp', 'My_Builds', 'keymaps']
+	exclude_files = ['Textures13.db', '.DS_Store', 'Thumbs.db', '.gitignore']
 	bad_files     = [os.path.join(DATABASE, 'onechannelcache.db'),
 					 os.path.join(DATABASE, 'saltscache.db'), 
 					 os.path.join(DATABASE, 'saltscache.db-shm'), 
