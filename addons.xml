@@ -31,16 +31,4 @@
             <platform>all</platform>
     </extension>
 </addon>
-
-<addon id="resource.uisounds.btaeon" version="1.0.1" name="Brokentechie: Aeon Nox Mod" provider-name="BT">
-  <requires>
-    <import addon="kodi.resource" version="1.0.0"/>
-  </requires>
-  <extension point="kodi.resource.uisounds"/>
-  <extension point="kodi.addon.metadata">
-    <summary lang="en">Brokentechie: Aeon Nox Mod</summary>
-    <description lang="en">Brokentechie: Aeon Nox Mod</description>
-    <platform>all</platform>
-  </extension>
-</addon>
 </addons>
