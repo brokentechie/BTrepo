@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
-<addon id="plugin.program.btwizard" name="BT Wizard" version="3.0.7" provider-name="BrokenTechie">
+<addon id="plugin.program.btwizard" name="[COLOR dodgerblue] BT[COLOR] Wizard" version="3.0.7" provider-name="BrokenTechie">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
   </requires>
@@ -15,7 +15,7 @@
   </extension>
 </addon>
 
-    <addon id="repository.brokentechie" name="[COLOR blue] Brokentechie [/COLOR] Repository" version="1.0.4" provider-name="Brokentechie">
+    <addon id="repository.brokentechie" name="[COLOR dodgerblue] Brokentechie[/COLOR] Repository" version="1.0.2" provider-name="Brokentechie">
         <requires>
             <import addon="xbmc.addon" version="12.0.0"/>
         </requires>
