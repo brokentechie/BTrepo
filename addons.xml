@@ -26,7 +26,7 @@
         <hashes>false</hashes>
     </extension>
     <extension point="xbmc.addon.metadata">
-        <summary>[COLOR ghostwhite]Brokentechie Repository[/COLOR]</summary>
+        <summary>[COLOR ghostwhite]Home of the BT Wizard[/COLOR]</summary>
         <description>The Brokentechie Repository.</description>
         <platform>all</platform>
     </extension>
