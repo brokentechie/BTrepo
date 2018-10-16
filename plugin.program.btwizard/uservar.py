@@ -7,12 +7,12 @@ ADDON_ID       = xbmcaddon.Addon().getAddonInfo('id')
 ADDONTITLE     = 'BrokenTechie Wizard'
 EXCLUDES       = [ADDON_ID]
 # Text File with build info in it.
-BUILDFILE      = 'http://brokentechie.ddns.net/wizard/brokentechiebuilds.txt'
+BUILDFILE      = 'http://retrotechie.ddns.net/wizard/brokentechiebuilds.txt'
 # How often you would list it to check for build updates in days
 # 0 being every startup of kodi
 UPDATECHECK    = 0
 # Text File with apk info in it.
-APKFILE        = 'http://brokentechie.ddns.net/wizard/apks.txt'
+APKFILE        = 'http://retrotechie.ddns.net/wizard/apks.txt'
 # Text File with Youtube Videos urls.  Leave as 'http://' to ignore
 YOUTUBETITLE   = 'YouTube Videos'
 YOUTUBEFILE    = 'http://'
