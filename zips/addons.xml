@@ -35,7 +35,7 @@
     </extension>
 </addon>
 
-<addon id="skin.aeon.nox.silvo" version="7.0.7" name="Aeon Nox: SiLVO" provider-name="SiLVO">
+<addon id="skin.aeon.nox.bt" version="7.0.7" name="Aeon Nox: SiLVO BT Mod" provider-name="Brokentechie">
 	<requires>
 		<import addon="xbmc.gui" version="5.14.0" />
 		<import addon="script.skinshortcuts" version="1.0.10" />
