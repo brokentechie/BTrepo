@@ -2,7 +2,7 @@
 <window>
     <coordinates>
         <left>635</left>
-        <top>180</top>
+        <top>160</top>
     </coordinates>
     <controls>
         <control type="group">
@@ -11,7 +11,7 @@
                 <posx>0</posx>
                 <posy>0</posy>
                 <width>650</width>
-                <height>720</height>
+                <height>765</height>
                 <texture border="2">Background/loguploader-dialog-bg.png</texture>
             </control>
             <control type="image">
@@ -129,6 +129,22 @@
                 <radioheight>45</radioheight>
                 <radioposx>530</radioposx>
                 <label>Keep My Profiles.xml</label>
+                <font>font12</font>
+                <texturefocus colordiffuse="FF12B2E7">RadioButton/MenuItemFO.png</texturefocus>
+                <texturenofocus>RadioButton/MenuItemNF.png</texturenofocus>
+                <textureradioonfocus colordiffuse="FF12B2E7">RadioButton/radiobutton-focus.png</textureradioonfocus>
+                <textureradioonnofocus colordiffuse="FF12B2E7">RadioButton/radiobutton-focus.png</textureradioonnofocus>
+                <textureradioofffocus colordiffuse="FF12B2E7">RadioButton/radiobutton-focus.png</textureradioofffocus>
+                <textureradiooffnofocus>RadioButton/radiobutton-nofocus.png</textureradiooffnofocus>
+            </control>
+            <control type="radiobutton" id="314">
+                <width>610</width>
+                <height>40</height>
+                <textwidth>565</textwidth>
+                <textoffsetx>10</textoffsetx>
+                <radioheight>45</radioheight>
+                <radioposx>530</radioposx>
+                <label>Keep My playercorefactory.xml</label>
                 <font>font12</font>
                 <texturefocus colordiffuse="FF12B2E7">RadioButton/MenuItemFO.png</texturefocus>
                 <texturenofocus>RadioButton/MenuItemNF.png</texturenofocus>
@@ -269,7 +285,7 @@
         <control type="group" id="9001">
             <control type="button" id="201">
                 <left>350</left>
-                <top>630</top>
+                <top>675</top>
                 <width>300</width>
                 <height>90</height>
                 <font>font13</font>
