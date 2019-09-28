@@ -23,14 +23,14 @@ BUILDFILE      = 'http://retrotechie.ddns.net/wizard/brokentechiebuilds.txt'
 # 0 being every startup of kodi
 UPDATECHECK    = 0
 # Text File with apk info in it.  Leave as 'http://' to ignore
-APKFILE        = 'http://retrotechie.ddns.net/wizard/apks.txt'
+APKFILE        = 'http://'
 # Text File with Youtube Videos urls.  Leave as 'http://' to ignore
 YOUTUBETITLE   = ''
 YOUTUBEFILE    = 'http://'
 # Text File for addon installer.  Leave as 'http://' to ignore
 ADDONFILE      = 'http://'
 # Text File for advanced settings.  Leave as 'http://' to ignore
-ADVANCEDFILE   = 'http://'
+ADVANCEDFILE   = 'http://retrotechie.ddns.net/wizard/advanced.txt'
 #########################################################
 
 #########################################################
