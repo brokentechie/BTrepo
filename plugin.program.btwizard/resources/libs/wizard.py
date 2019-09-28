@@ -1392,7 +1392,7 @@ def convertAdvanced():
 ##########################
 def backUpOptions(type, name=""):
 	exclude_dirs  = [ADDON_ID, 'cache', 'system', 'Thumbnails', 'peripheral_data', 'temp', 'My_Builds', 'keymaps', 'cdm']
-	exclude_files = ['Textures13.db', '.DS_Store', 'advancedsettings.xml', 'Thumbs.db', '.gitignore']
+	exclude_files = ['Textures13.db', '.DS_Store', 'Thumbs.db', '.gitignore']
 	## TODO: fix these
 	bad_files     = [
 					(os.path.join(ADDOND, 'plugin.video.placenta', 'cache.db')),
