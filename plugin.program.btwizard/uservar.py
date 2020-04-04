@@ -18,7 +18,7 @@ EXCLUDES       = [ADDON_ID, 'repository.brokentechie']
 CACHETEXT      = 'Yes'
 CACHEAGE       = 30
 # Text File with build info in it.
-BUILDFILE      = 'http://retrotechie.ddns.net/wizard/brokentechiebuilds.txt'
+BUILDFILE      = 'http://retrotechie.org/wizard/brokentechiebuilds.txt'
 # How often you would like it to check for build updates in days
 # 0 being every startup of kodi
 UPDATECHECK    = 0
@@ -30,7 +30,7 @@ YOUTUBEFILE    = 'http://'
 # Text File for addon installer.  Leave as 'http://' to ignore
 ADDONFILE      = 'http://'
 # Text File for advanced settings.  Leave as 'http://' to ignore
-ADVANCEDFILE   = 'http://retrotechie.ddns.net/wizard/advanced.txt'
+ADVANCEDFILE   = 'http://retrotechie.org/wizard/advanced.txt'
 #########################################################
 
 #########################################################
