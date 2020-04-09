@@ -11,8 +11,8 @@ ART            = os.path.join(PATH, 'resources', 'art')
 ### User Edit Variables #################################
 #########################################################
 ADDON_ID       = xbmcaddon.Addon().getAddonInfo('id')
-ADDONTITLE     = 'BrokenTechie Wizard'
-BUILDERNAME    = 'BrokenTechie'
+ADDONTITLE     = 'RetroTechie Wizard'
+BUILDERNAME    = 'RetroTechie'
 EXCLUDES       = [ADDON_ID, 'repository.brokentechie']
 # Enable/Disable the text file caching with 'Yes' or 'No' and age being how often it rechecks in minutes
 CACHETEXT      = 'Yes'

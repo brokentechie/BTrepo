@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addons>
-<addon id="plugin.program.btwizard" name="RT Wizard" version="4.7" provider-name="RetroTechie">
+<addon id="plugin.program.btwizard" name="RT Wizard" version="4.8" provider-name="RetroTechie">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
   </requires>
