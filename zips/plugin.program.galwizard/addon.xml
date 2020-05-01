@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.program.galwizard" name="[COLOR dodgerblue][B]Galaxy[/B][/COLOR]Wizard" version="1.0.0" provider-name="RetroTechie">
+<addon id="plugin.program.galwizard" name="[COLOR dodgerblue][B]Galaxy[/B][/COLOR] Wizard" version="1.0.1" provider-name="RetroTechie">
     <requires>
         <import addon="xbmc.python" version="2.1.0" />
         <import addon="script.module.requests" />
@@ -13,18 +13,20 @@
     <extension point="xbmc.service" library="startup.py" start="startup" />
     
     <extension point="xbmc.addon.metadata">
-        <summary lang="en">[COLOR dodgerblue][B]Galaxy[/B][/COLOR]Wizard</summary>
-        <description lang="en">[COLOR dodgerblue][B]Galaxy[/B][/COLOR]Wizard automated build installs.</description> 
+        <summary lang="en">[COLOR dodgerblue][B]Galaxy[/B][/COLOR] Wizard</summary>
+        <description lang="en">[COLOR dodgerblue][B]Galaxy[/B][/COLOR] Wizard automated build installs.</description> 
         <platform>all</platform>
         <reuselanguageinvoker>false</reuselanguageinvoker>
-        <source>https://www.github.com/brokentechie/plugin.program.retrowizard/</source>
+        <source>https://www.github.com/brokentechie/plugin.program.galwizard/</source>
         <news>
+1.0.1
+ - Update title and some artwork
 1.0.0
  - Initial Commit Forked from DrInfernoo
         </news>
         <assets>
             <icon>icon.png</icon>
-            <fanart>fanart.png</fanart>
+            <fanart>fanart.jpg</fanart>
         </assets>
     </extension>
 </addon>

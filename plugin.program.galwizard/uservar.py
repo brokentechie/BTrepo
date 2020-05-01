@@ -13,7 +13,7 @@ ART = os.path.join(PATH, 'resources', 'media')
 #########################################################
 #        User Edit Variables                            #
 #########################################################
-ADDONTITLE = '[COLOR dodgerblue][B]Galaxy[/B][/COLOR]Wizard'
+ADDONTITLE = '[COLOR dodgerblue][B]Galaxy[/B][/COLOR] Wizard'
 BUILDERNAME = 'RetroTechie'
 EXCLUDES = [ADDON_ID, 'repository.brokentechie']
 # Text File with build info in it.
@@ -114,7 +114,7 @@ NOTIFICATION = 'http://'
 HEADERTYPE = 'Text'
 # Font size of header
 FONTHEADER = 'Font14'
-HEADERMESSAGE = '[COLOR limegreen][B]Open[/B][/COLOR]Wizard'
+HEADERMESSAGE = '[COLOR dodgerblue][B]Galaxy[/B][/COLOR] Wizard'
 # url to image if using Image 424x180
 HEADERIMAGE = 'http://'
 # Font for Notification Window
