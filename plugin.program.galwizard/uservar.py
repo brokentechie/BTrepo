@@ -65,7 +65,7 @@ COLOR2 = 'white'
 # Primary menu items   / {0} is the menu item and is required
 THEME1 = u'[COLOR {color2}]{{}}[/COLOR]'.format(color2=COLOR2)
 # Build Names          / {0} is the menu item and is required
-THEME2 = u'[COLOR {color2}]{{}}[/COLOR]'.format(color2=COLOR2)
+THEME2 = u'[COLOR {color1}]{{}}[/COLOR]'.format(color1=COLOR1)
 # Alternate items      / {0} is the menu item and is required
 THEME3 = u'[COLOR {color1}]{{}}[/COLOR]'.format(color1=COLOR1)
 # Current Build Header / {0} is the menu item and is required
